@@ -82,49 +82,30 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ═══ EDITORIAL FOUNDERS SECTION ═══ */}
-      <section className={styles.founders}>
-        <div className={`${styles.foundersHeader} reveal`}>
-          <h2>Meet the Founders</h2>
+      {/* ═══ THE PHILOSOPHY ═══ */}
+      <section className={styles.philosophy}>
+        <div className={`${styles.philosophyHeader} reveal`}>
+          <h2>The Philosophy of Living Elegance</h2>
+          <p>We do not just sell plants. We curate living art for those who demand the extraordinary.</p>
         </div>
         
-        {/* Supriya - Left Image, Right Text */}
-        <div className={styles.editorialRow}>
-          <div className={`${styles.editorialImageWrapper} reveal-left`}>
-            <img 
-              src="/images/founder_supriya.png" 
-              alt="Supriya Gurav" 
-              className={styles.editorialImage}
-            />
+        <div className={styles.philosophyGrid}>
+          <div className={`${styles.philosophyCard} reveal`}>
+            <div className={styles.philosophyIcon}>✨</div>
+            <h3>Curated Aesthetics</h3>
+            <p>Every Suva Botanica piece is selected for its architectural presence, ensuring it elevates rather than clutters your space.</p>
           </div>
-          <div className={`${styles.editorialTextWrapper} reveal-right`}>
-            <div className={styles.editorialCard}>
-              <span className={styles.founderRole}>Head of Botanical Operations</span>
-              <h3 className={styles.founderName}>Supriya Gurav</h3>
-              <p className={styles.founderBio}>
-                With a background in Agri-Business Management (ABM) from DY Patil and active professional experience in the biotechnology sector, Supriya leads our plant curation. Her expertise allows Suva Botanica to bypass traditional, unorganized nurseries. Under her guidance, every plant we sell is sourced from cutting-edge tissue-culture environments—ensuring your living gift is virus-free, structurally flawless, and engineered to thrive indoors.
-              </p>
-            </div>
+          
+          <div className={`${styles.philosophyCard} reveal`} style={{ transitionDelay: '0.2s' }}>
+            <div className={styles.philosophyIcon}>🔬</div>
+            <h3>Biotech Precision</h3>
+            <p>Raised in sterile, climate-perfect tissue culture environments, our plants are virtually immune to the pests and diseases of traditional nurseries.</p>
           </div>
-        </div>
-
-        {/* Avadhut - Right Image, Left Text (Reverse) */}
-        <div className={`${styles.editorialRow} ${styles.reverse}`}>
-          <div className={`${styles.editorialImageWrapper} reveal-right`}>
-            <img 
-              src="/images/founder_avadhut.png" 
-              alt="Avadhut Gurav" 
-              className={styles.editorialImage}
-            />
-          </div>
-          <div className={`${styles.editorialTextWrapper} reveal-left`}>
-            <div className={styles.editorialCard}>
-              <span className={styles.founderRole}>Head of Digital & Design Experience</span>
-              <h3 className={styles.founderName}>Avadhut Gurav</h3>
-              <p className={styles.founderBio}>
-                A technology and design specialist pursuing his BCA at IMED Pune, Avadhut architects the Suva Botanica customer journey. From our proprietary, spill-proof "soil-lock" transit engineering to the seamless digital storefront, Avadhut ensures that the experience of buying and unboxing a Suva Botanica gift is as premium as the plant itself.
-              </p>
-            </div>
+          
+          <div className={`${styles.philosophyCard} reveal`} style={{ transitionDelay: '0.4s' }}>
+            <div className={styles.philosophyIcon}>🌱</div>
+            <h3>Zero Transition Shock</h3>
+            <p>Through rigorous hardening processes, we ensure each plant transitions flawlessly from our clinical lab directly to your living room.</p>
           </div>
         </div>
       </section>
@@ -153,22 +134,22 @@ export default function AboutPage() {
 
       {/* ═══ CONNECT SECTION ═══ */}
       <section className={styles.connect}>
-        <h2 className={`${styles.connectTitle} reveal`}>Connect With the Founders</h2>
+        <h2 className={`${styles.connectTitle} reveal`}>Begin Your Botanical Journey</h2>
         <p className={`${styles.connectText} reveal`}>
-          We handle our local Pune operations directly to ensure absolute quality control. For bulk corporate gifting, event styling inquiries, or specialized orders, reach out to us directly:
+          We handle our local Pune operations directly to ensure absolute quality control. For bulk corporate gifting, event styling inquiries, or specialized orders, reach out to our curation experts:
         </p>
         
         <div className={styles.connectGrid}>
-          <a href="https://wa.me/919518780272?text=Hi%20Avadhut,%20I%20have%20an%20inquiry%20regarding%20Suva%20Botanica." className={`${styles.magneticBtn} reveal-left`} target="_blank" rel="noopener noreferrer">
+          <a href="https://wa.me/919518780272?text=Hi%20Suva%20Botanica,%20I%20have%20an%20inquiry." className={`${styles.magneticBtn} reveal-left`} target="_blank" rel="noopener noreferrer">
             <span className={styles.btnContent}>
-              <span className={styles.btnName}>Message Avadhut</span>
+              <span className={styles.btnName}>Digital & Design Experience</span>
               <span className={styles.btnNumber}>+91 95187 80272</span>
             </span>
           </a>
           
-          <a href="https://wa.me/918669592638?text=Hi%20Supriya,%20I%20have%20an%20inquiry%20regarding%20Suva%20Botanica." className={`${styles.magneticBtn} reveal-right`} target="_blank" rel="noopener noreferrer">
+          <a href="https://wa.me/918669592638?text=Hi%20Suva%20Botanica,%20I%20have%20an%20inquiry." className={`${styles.magneticBtn} reveal-right`} target="_blank" rel="noopener noreferrer">
             <span className={styles.btnContent}>
-              <span className={styles.btnName}>Message Supriya</span>
+              <span className={styles.btnName}>Botanical Operations</span>
               <span className={styles.btnNumber}>+91 86695 92638</span>
             </span>
           </a>

@@ -1,0 +1,44 @@
+.orderBar {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 1rem;
+  background: rgba(247, 243, 237, 0.95);
+  backdrop-filter: blur(10px);
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  z-index: 100;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateY(0);
+}
+
+.orderBar.hidden {
+  transform: translateY(100%);
+}
+
+.orderBtn {
+  display: block;
+  width: 100%;
+  padding: 1rem;
+  background: var(--text-main);
+  color: var(--bg-main);
+  text-align: center;
+  border-radius: 100px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 0.875rem;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.orderBtn:active {
+  opacity: 0.8;
+}
+
+@media (max-width: 768px) {
+  .orderBar {
+    display: block;
+  }
+}

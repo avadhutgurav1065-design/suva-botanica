@@ -113,111 +113,74 @@
 }
 
 
-/* ═══ EDITORIAL FOUNDERS SECTION ═══ */
-.founders {
+/* ═══ THE PHILOSOPHY SECTION ═══ */
+.philosophy {
   padding: var(--space-4xl) var(--space-lg);
   background-color: var(--cream);
   position: relative;
   z-index: 3;
 }
 
-.foundersHeader {
+.philosophyHeader {
   text-align: center;
-  margin-bottom: var(--space-4xl);
+  max-width: 800px;
+  margin: 0 auto var(--space-4xl);
 }
 
-.foundersHeader h2 {
+.philosophyHeader h2 {
   font-family: var(--font-display);
   font-size: clamp(3rem, 5vw, 4.5rem);
   color: var(--forest-deep);
-}
-
-.editorialRow {
-  display: flex;
-  align-items: center;
-  max-width: 1200px;
-  margin: 0 auto var(--space-4xl);
-  gap: var(--space-2xl);
-}
-
-.editorialRow.reverse {
-  flex-direction: row-reverse;
-}
-
-.editorialImageWrapper {
-  flex: 1;
-  position: relative;
-  height: 650px;
-  border-radius: var(--radius-2xl);
-  overflow: hidden;
-  box-shadow: 0 20px 60px rgba(26, 42, 23, 0.15);
-}
-
-.editorialImage {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center 30%; /* Better frame the full body photo */
-  filter: contrast(1.05) saturate(1.05); /* Subtle enhancement */
-  image-rendering: high-quality; /* Maximize browser rendering crispness */
-  transition: transform 1.2s var(--ease-out-expo), filter 1.2s var(--ease-out-expo);
-}
-
-.editorialImageWrapper:hover .editorialImage {
-  transform: scale(1.05);
-  filter: contrast(1.1) saturate(1.1);
-}
-
-.editorialTextWrapper {
-  flex: 1;
-  position: relative;
-  z-index: 2;
-}
-
-/* Pull text over the image for an overlapping editorial look */
-.editorialRow .editorialTextWrapper {
-  margin-left: -100px;
-}
-.editorialRow.reverse .editorialTextWrapper {
-  margin-left: 0;
-  margin-right: -100px;
-}
-
-.editorialCard {
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  padding: var(--space-3xl);
-  border-radius: var(--radius-xl);
-  border: 1px solid rgba(255,255,255,0.4);
-  box-shadow: 0 10px 40px rgba(0,0,0,0.05);
-}
-
-.founderRole {
-  display: block;
-  font-family: var(--font-body);
-  font-size: 0.875rem;
-  text-transform: uppercase;
-  letter-spacing: 0.15em;
-  color: var(--sage-dark);
   margin-bottom: var(--space-sm);
-  font-weight: 600;
 }
 
-.founderName {
+.philosophyHeader p {
+  font-size: 1.25rem;
+  color: var(--charcoal);
+  opacity: 0.8;
+}
+
+.philosophyGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--space-2xl);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.philosophyCard {
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(26, 42, 23, 0.05);
+  border-radius: var(--radius-2xl);
+  padding: var(--space-3xl);
+  text-align: center;
+  transition: transform 0.4s var(--ease-out-expo), box-shadow 0.4s ease;
+}
+
+.philosophyCard:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+  background: rgba(255, 255, 255, 0.95);
+}
+
+.philosophyIcon {
+  font-size: 3rem;
+  margin-bottom: var(--space-md);
+  opacity: 0.9;
+}
+
+.philosophyCard h3 {
   font-family: var(--font-display);
-  font-size: 3.5rem;
+  font-size: 2rem;
   color: var(--forest-deep);
   margin-bottom: var(--space-md);
-  line-height: 1.1;
 }
 
-.founderBio {
+.philosophyCard p {
   font-size: 1.125rem;
-  line-height: 1.8;
+  line-height: 1.7;
   color: var(--charcoal);
   opacity: 0.9;
-  text-align: justify;
 }
 
 
@@ -385,17 +348,33 @@
 
 /* Responsive */
 @media (max-width: 1024px) {
-  .editorialRow, .editorialRow.reverse {
-    flex-direction: column;
+  /* Philosophy */
+  .philosophy {
+    padding: var(--space-2xl) 1rem;
   }
-  .editorialImageWrapper {
-    width: 100%;
-    height: 500px;
+
+  .philosophyHeader {
+    margin-bottom: var(--space-2xl);
   }
-  .editorialRow .editorialTextWrapper,
-  .editorialRow.reverse .editorialTextWrapper {
-    margin: -80px auto 0;
-    width: 90%;
+
+  .philosophyHeader h2 {
+    font-size: clamp(2rem, 7vw, 2.75rem);
+  }
+
+  .philosophyHeader p {
+    font-size: 1rem;
+  }
+
+  .philosophyCard {
+    padding: var(--space-xl) var(--space-lg);
+  }
+
+  .philosophyCard h3 {
+    font-size: 1.75rem;
+  }
+
+  .philosophyCard p {
+    font-size: 1rem;
   }
 }
 
@@ -404,6 +383,11 @@
   .hero {
     min-height: 60vh;
     height: auto;
+    padding-top: var(--nav-height);
+  }
+
+  .heroContent {
+    margin-top: 0;
   }
 
   .heroTitle {
@@ -416,51 +400,6 @@
   }
 
   .scrollIndicator { display: none; }
-
-  /* Founders */
-  .founders {
-    padding: var(--space-2xl) 1rem;
-  }
-
-  .foundersHeader {
-    margin-bottom: var(--space-2xl);
-  }
-
-  .foundersHeader h2 {
-    font-size: clamp(2rem, 7vw, 2.75rem);
-  }
-
-  .editorialImageWrapper {
-    height: 350px;
-  }
-
-  .editorialRow .editorialTextWrapper,
-  .editorialRow.reverse .editorialTextWrapper {
-    margin: -60px auto 0;
-    width: 95%;
-  }
-
-  .editorialRow {
-    margin-bottom: var(--space-2xl);
-  }
-
-  .editorialCard {
-    padding: var(--space-xl) var(--space-lg);
-  }
-
-  .founderName {
-    font-size: 2rem;
-  }
-
-  .founderBio {
-    font-size: 0.9375rem;
-    line-height: 1.7;
-    text-align: left;
-  }
-
-  .founderRole {
-    font-size: 0.75rem;
-  }
 
   /* Lab Promise */
   .labPromise {

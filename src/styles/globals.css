@@ -369,6 +369,10 @@ h4 { font-size: 1.125rem; }
   box-shadow: 0 1px 0 rgba(0,0,0,0.06);
 }
 
+.nav.hidden {
+  transform: translateY(-100%);
+}
+
 .nav-inner {
   display: flex;
   align-items: center;
@@ -419,9 +423,9 @@ h4 { font-size: 1.125rem; }
 .brand-sub {
   display: block;
   font-family: var(--font-body);
-  font-size: 0.6rem;
+  font-size: 0.75rem;
   font-weight: 400;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--text-secondary);
   margin-top: -2px;
@@ -2078,12 +2082,8 @@ dialog.product-dialog::backdrop {
   .brand-text > span:first-child { font-size: 1.25rem; }
   .brand-sub { 
     display: block;
-    font-size: 0.45rem;
+    font-size: 0.65rem;
     letter-spacing: 0.05em;
-    max-width: 140px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
   }
   
   /* Hero section — proper padding */

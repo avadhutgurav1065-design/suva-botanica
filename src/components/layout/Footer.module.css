@@ -10,11 +10,11 @@
 /* Watermark Background */
 .watermark {
   position: absolute;
-  bottom: -4vw;
+  bottom: -2vw;
   left: 50%;
   transform: translateX(-50%);
   font-family: var(--font-display);
-  font-size: 16vw;
+  font-size: 10vw;
   font-weight: 800;
   color: rgba(255, 255, 255, 0.07);
   white-space: nowrap;
@@ -22,6 +22,8 @@
   z-index: 0;
   user-select: none;
   line-height: 0.8;
+  width: 100%;
+  text-align: center;
 }
 
 /* Subtle particles for botanical magic */
@@ -208,7 +210,7 @@
     gap: var(--space-2xl);
   }
   .watermark {
-    font-size: 24vw;
+    font-size: 11vw;
   }
 }
 
@@ -247,11 +249,14 @@
   }
 
   .column ul {
-    gap: 0.625rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.625rem 1rem;
+    width: 100%;
   }
 
   .watermark {
-    font-size: 22vw;
+    font-size: 11vw;
     bottom: -1vw;
   }
 

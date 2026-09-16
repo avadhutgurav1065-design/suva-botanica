@@ -5,18 +5,38 @@ import { siteConfig } from '@/data/site-config';
 export default function Navigation() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [isHidden, setIsHidden] = useState(false);
 
   useEffect(() => {
+    let lastScrollY = window.scrollY;
+
     const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
+      const currentScrollY = window.scrollY;
+      setScrolled(currentScrollY > 50);
+
+      // Hide header when scrolling down, show when scrolling up
+      if (currentScrollY > lastScrollY && currentScrollY > 100 && !menuOpen) {
+        setIsHidden(true);
+      } else {
+        setIsHidden(false);
+      }
+
+      // Hide header when reaching footer
+      const scrollPosition = window.innerHeight + currentScrollY;
+      const documentHeight = document.documentElement.scrollHeight;
+      if (documentHeight - scrollPosition < 150) {
+        setIsHidden(true);
+      }
+
+      lastScrollY = currentScrollY;
     };
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [menuOpen]);
 
   return (
     <>
-      <nav className={`nav ${scrolled ? 'scrolled' : ''}`} role="navigation">
+      <nav className={`nav ${scrolled ? 'scrolled' : ''} ${isHidden ? 'hidden' : ''}`} role="navigation">
         <div className="nav-inner">
           <Link href="/" className="nav-logo">
             <img 

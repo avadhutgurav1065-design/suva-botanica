@@ -43,7 +43,7 @@ export default function Header() {
 
   return (
     <>
-      <nav className={`${styles.nav} ${isScrolled ? styles.scrolled : ''} ${isHidden ? styles.hidden : ''}`}>
+      <nav className={`${styles.nav} ${isHidden ? styles.hidden : ''}`}>
         <div className={styles.inner}>
           <Link href="/" className={styles.brand}>
             <img 

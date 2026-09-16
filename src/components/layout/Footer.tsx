@@ -25,7 +25,7 @@ export default function Footer() {
               />
             </Link>
             <p className={styles.brandDesc}>
-              Premium tissue-cultured plants in designer planters.
+              Curated greenery for curated spaces.
             </p>
             <div className={styles.socialLinks}>
               <a href={siteConfig.social.instagram} target="_blank" rel="noopener noreferrer" aria-label="Instagram">

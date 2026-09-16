@@ -3,6 +3,7 @@ import '../styles/globals.css';
 import Navigation from '@/components/Navigation';
 import CursorTrail from '@/components/CursorTrail';
 import ScrollColorShift from '@/components/ScrollColorShift';
+import OrderBar from '@/components/ui/OrderBar';
 
 export const metadata = {
   title: 'Suva Botanica | The Art of the Living Keepsake',
@@ -26,6 +27,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <CursorTrail />
         <ScrollColorShift />
         <Navigation />
+        <OrderBar />
         <main>{children}</main>
         <Footer />
       </body>
