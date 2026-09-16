@@ -240,19 +240,23 @@
   }
 
   .column h4 {
-    font-size: 0.625rem;
+    font-size: 0.6875rem;
     margin-bottom: var(--space-sm);
+    text-align: center;
   }
 
   .column a, .contactItem {
     font-size: 0.75rem;
+    justify-content: center;
+    text-align: center;
   }
 
   .column ul {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0.625rem 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.625rem;
     width: 100%;
+    align-items: center;
   }
 
   .watermark {
