@@ -23,7 +23,7 @@ export const siteConfig = {
   },
 
   social: {
-    instagram: 'https://instagram.com/suvabotanica',
+    instagram: 'https://www.instagram.com/suvabotanica?stkn=NjBwZ29lOHNsMXlm',
   },
 
   nav: {
