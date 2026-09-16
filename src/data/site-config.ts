@@ -8,7 +8,7 @@ export const siteConfig = {
   tagline: 'Curated Greenery for Curated Spaces',
   description:
     'Premium tissue-cultured plants in designer planters. The perfect living gift for housewarmings, anniversaries, birthdays, and corporate events. Pune-first delivery.',
-  url: 'https://suvabotanica.com',
+  url: 'https://suva-botanica.vercel.app',
   ogImage: '/images/og-image.jpg',
 
   contact: {
