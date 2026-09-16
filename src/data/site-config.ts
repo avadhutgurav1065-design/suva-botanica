@@ -17,7 +17,7 @@ export const siteConfig = {
       `https://wa.me/919518780272?text=${encodeURIComponent(message)}`,
     defaultWhatsappMessage:
       "Hi Suva Botanica! I'd like to know more about your plants.",
-    email: 'hello@suvabotanica.com',
+    email: 'suvabotanica@gmail.com',
     phone: '+91 95187 80272',
     address: 'Pune, Maharashtra, India',
   },

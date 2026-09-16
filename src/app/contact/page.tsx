@@ -72,8 +72,8 @@ export default function ContactPage() {
                 
                 <div className={styles.contactItem}>
                   <span className={styles.contactRole}>Email</span>
-                  <a href="mailto:partnerships@suvabotanica.in" className={styles.contactLink}>
-                    partnerships@suvabotanica.in
+                  <a href="mailto:suvabotanica@gmail.com" className={styles.contactLink}>
+                    suvabotanica@gmail.com
                   </a>
                 </div>
               </div>
@@ -100,8 +100,8 @@ export default function ContactPage() {
               </svg>
               WhatsApp Support
             </a>
-            <a href="mailto:support@suvabotanica.in" className={styles.supportBtn} style={{ backgroundColor: 'transparent', color: 'var(--forest-deep)', border: '1px solid var(--forest-deep)' }}>
-              support@suvabotanica.in
+            <a href="mailto:suvabotanica@gmail.com" className={styles.supportBtn} style={{ backgroundColor: 'transparent', color: 'var(--forest-deep)', border: '1px solid var(--forest-deep)' }}>
+              suvabotanica@gmail.com
             </a>
           </div>
           

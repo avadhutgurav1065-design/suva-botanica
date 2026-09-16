@@ -35,7 +35,7 @@ export default function PrivacyPage() {
       <p>We may use third-party services (e.g., WhatsApp, analytics) that have their own privacy policies. We encourage you to review their policies separately.</p>
 
       <h2>6. Your Rights</h2>
-      <p>You have the right to access, correct, or delete your personal information. To exercise these rights, please contact us at <a href="mailto:hello@suvabotanica.com">hello@suvabotanica.com</a>.</p>
+      <p>You have the right to access, correct, or delete your personal information. To exercise these rights, please contact us at <a href="mailto:suvabotanica@gmail.com">suvabotanica@gmail.com</a>.</p>
 
       <h2>7. Changes to This Policy</h2>
       <p>We may update this Privacy Policy from time to time. Changes will be posted on this page with an updated revision date.</p>
