@@ -1,0 +1,134 @@
+.page {
+  background-color: var(--cream);
+  min-height: 100vh;
+  padding-top: var(--nav-height);
+  padding-bottom: var(--space-4xl);
+}
+
+.hero {
+  padding: var(--space-4xl) var(--space-lg) var(--space-2xl);
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 5vw, 4.5rem);
+  color: var(--forest-deep);
+  margin-bottom: var(--space-sm);
+  line-height: 1.1;
+}
+
+.lastUpdated {
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--sage-dark);
+  font-weight: 600;
+}
+
+.contentWrapper {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 var(--space-lg);
+}
+
+.introText {
+  font-size: 1.25rem;
+  line-height: 1.8;
+  color: #2D2D2D;
+  opacity: 0.9;
+  margin-bottom: var(--space-3xl);
+  text-align: center;
+}
+
+.policySection {
+  margin-bottom: var(--space-3xl);
+  background: rgba(255, 255, 255, 0.4);
+  padding: var(--space-2xl);
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(139, 158, 130, 0.2);
+}
+
+.sectionTitle {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  color: var(--forest-deep);
+  margin-bottom: var(--space-md);
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-sm);
+}
+
+.sectionNumber {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--gold);
+}
+
+.policyText {
+  font-size: 1.125rem;
+  line-height: 1.8;
+  color: #2D2D2D;
+  margin-bottom: var(--space-md);
+}
+
+.policyList {
+  margin-left: var(--space-md);
+  margin-bottom: var(--space-md);
+}
+
+.policyListItem {
+  font-size: 1.125rem;
+  line-height: 1.8;
+  color: #2D2D2D;
+  margin-bottom: var(--space-sm);
+  position: relative;
+  padding-left: var(--space-md);
+}
+
+.policyListItem::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 12px;
+  width: 6px;
+  height: 6px;
+  background-color: var(--sage);
+  border-radius: 50%;
+}
+
+.contactBlock {
+  background: var(--sage-light);
+  padding: var(--space-2xl);
+  border-radius: var(--radius-lg);
+  margin-top: var(--space-2xl);
+}
+
+.contactItem {
+  margin-bottom: var(--space-sm);
+  font-size: 1.125rem;
+  color: var(--forest-deep);
+}
+
+.contactItem a {
+  color: var(--forest-deep);
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-color: var(--sage);
+  text-underline-offset: 4px;
+}
+
+.contactItem a:hover {
+  color: var(--sage-dark);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .policySection {
+    padding: var(--space-xl) var(--space-md);
+  }
+}

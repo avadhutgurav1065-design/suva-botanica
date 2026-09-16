@@ -1,0 +1,193 @@
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.bg img {
+  object-fit: cover;
+  object-position: center;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    135deg,
+    rgba(247, 243, 237, 0.92) 0%,
+    rgba(247, 243, 237, 0.75) 40%,
+    rgba(247, 243, 237, 0.4) 100%
+  );
+}
+
+/* Floating Botanicals */
+.botanical {
+  position: absolute;
+  z-index: 2;
+  color: var(--sage);
+  pointer-events: none;
+}
+
+.botanical1 {
+  top: 10%;
+  right: 5%;
+  width: 200px;
+  height: 200px;
+}
+
+.botanical2 {
+  bottom: 15%;
+  left: 3%;
+  width: 150px;
+  height: 150px;
+}
+
+/* Content */
+.content {
+  position: relative;
+  z-index: 3;
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: var(--space-5xl) var(--section-px) var(--space-3xl);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  justify-content: center;
+}
+
+.textBlock {
+  max-width: 680px;
+}
+
+.label {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-weight: 600;
+  color: var(--sage);
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-lg);
+}
+
+.labelLine {
+  display: inline-block;
+  width: 32px;
+  height: 1px;
+  background: var(--sage);
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-weight: 700;
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  color: var(--charcoal);
+  margin-bottom: var(--space-lg);
+}
+
+.titleAccent {
+  font-family: var(--font-accent);
+  font-style: italic;
+  font-weight: 400;
+  color: var(--forest);
+}
+
+.subtitle {
+  font-size: 1.125rem;
+  line-height: 1.8;
+  color: var(--text-secondary);
+  margin-bottom: var(--space-xl);
+  max-width: 540px;
+}
+
+.actions {
+  display: flex;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+}
+
+/* Scroll Indicator */
+.scrollIndicator {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
+.scrollIndicator span {
+  font-size: 0.6875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--sage);
+}
+
+.scrollLine {
+  width: 1px;
+  height: 40px;
+  background: var(--sage);
+  transform-origin: top;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .overlay {
+    background: linear-gradient(
+      180deg,
+      rgba(247, 243, 237, 0.95) 0%,
+      rgba(247, 243, 237, 0.85) 50%,
+      rgba(247, 243, 237, 0.6) 100%
+    );
+  }
+
+  .hero {
+    min-height: auto;
+    height: auto;
+  }
+
+  .content {
+    padding: calc(var(--nav-height) + var(--space-xl)) 1rem var(--space-xl);
+    min-height: 85vh;
+  }
+
+  .textBlock {
+    max-width: 100%;
+  }
+
+  .subtitle {
+    font-size: 0.9375rem;
+    line-height: 1.7;
+    margin-bottom: var(--space-lg);
+  }
+
+  .label {
+    font-size: 0.6875rem;
+    margin-bottom: var(--space-md);
+  }
+
+  .actions {
+    flex-direction: column;
+  }
+
+  .botanical1 { width: 100px; height: 100px; top: 15%; right: 0; }
+  .botanical2 { width: 60px; height: 60px; }
+
+  .scrollIndicator { display: none; }
+}
