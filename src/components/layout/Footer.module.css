@@ -218,9 +218,14 @@
   }
 
   .grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
     gap: var(--space-lg);
     padding-bottom: var(--space-lg);
+  }
+
+  .column:nth-child(1),
+  .column:nth-child(4) {
+    grid-column: span 2;
   }
 
   .brandLogo {
