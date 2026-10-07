@@ -1,11 +1,20 @@
 'use client';
 import { useEffect } from 'react';
 import { usePathname } from 'next/navigation';
+import { useTheme } from 'next-themes';
 
 export default function ScrollColorShift() {
   const pathname = usePathname();
+  const { resolvedTheme } = useTheme();
 
   useEffect(() => {
+    if (resolvedTheme === 'dark') {
+      document.body.style.backgroundColor = '';
+      document.body.style.color = '';
+      document.documentElement.style.removeProperty('--charcoal');
+      return;
+    }
+
     // Determine colors based on route
     let colors = [
       { pos: 0, color: [247, 243, 237], text: [45, 45, 45] },
@@ -85,7 +94,7 @@ export default function ScrollColorShift() {
       document.body.style.color = '';
       document.documentElement.style.removeProperty('--charcoal');
     };
-  }, [pathname]);
+  }, [pathname, resolvedTheme]);
 
   return null;
 }

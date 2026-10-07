@@ -4,6 +4,7 @@ import Navigation from '@/components/Navigation';
 import CursorTrail from '@/components/CursorTrail';
 import ScrollColorShift from '@/components/ScrollColorShift';
 import OrderBar from '@/components/ui/OrderBar';
+import { ThemeProvider } from '@/components/ui/ThemeProvider';
 
 export const metadata = {
   title: 'Suva Botanica | The Art of the Living Keepsake',
@@ -22,14 +23,16 @@ import Footer from '@/components/layout/Footer';
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body>
-        <CursorTrail />
-        <ScrollColorShift />
-        <Navigation />
-        <OrderBar />
-        <main>{children}</main>
-        <Footer />
+        <ThemeProvider attribute="data-theme" defaultTheme="light" enableSystem disableTransitionOnChange>
+          <CursorTrail />
+          <ScrollColorShift />
+          <Navigation />
+          <OrderBar />
+          <main>{children}</main>
+          <Footer />
+        </ThemeProvider>
       </body>
     </html>
   );

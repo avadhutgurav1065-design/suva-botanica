@@ -29,6 +29,7 @@ export const siteConfig = {
   nav: {
     main: [
       { label: 'Home', href: '/' },
+      { label: 'Plant Quiz', href: '/quiz' },
       { label: 'About Us', href: '/about' },
       { label: 'Our Plants', href: '/plants' },
       { label: 'Contact', href: '/contact' },

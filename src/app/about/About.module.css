@@ -149,7 +149,7 @@
 }
 
 .philosophyCard {
-  background: rgba(255, 255, 255, 0.7);
+  background: rgba(var(--white-rgb), 0.7);
   border: 1px solid rgba(26, 42, 23, 0.05);
   border-radius: var(--radius-2xl);
   padding: var(--space-3xl);
@@ -160,7 +160,7 @@
 .philosophyCard:hover {
   transform: translateY(-10px);
   box-shadow: 0 20px 40px rgba(0,0,0,0.05);
-  background: rgba(255, 255, 255, 0.95);
+  background: rgba(var(--white-rgb), 0.95);
 }
 
 .philosophyIcon {

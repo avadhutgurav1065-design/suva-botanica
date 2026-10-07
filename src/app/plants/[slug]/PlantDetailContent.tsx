@@ -7,6 +7,7 @@ import Link from 'next/link';
 import type { Plant } from '@/data/plants';
 import { siteConfig } from '@/data/site-config';
 import EncyclopediaSection from './EncyclopediaSection';
+import TextReveal from '@/components/effects/TextReveal';
 import styles from './PlantDetail.module.css';
 
 /* ── Difficulty → meter percentage mapping ── */
@@ -44,6 +45,14 @@ export default function PlantDetailContent({ plant }: { plant: Plant }) {
 
   const imageScale = useTransform(scrollYProgress, [0, 1], [1, 1.15]);
   const heroFade  = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
+
+  // Page-level scroll for background shifting
+  const pageRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress: pageScroll } = useScroll({
+    target: pageRef,
+    offset: ['start start', 'end end'],
+  });
+  const pageBg = useTransform(pageScroll, [0, 0.4, 0.8], ['var(--cream)', 'var(--cream-warm)', 'var(--sage-light)']);
 
   // Floating action bar visibility
   const [showFab, setShowFab] = useState(false);
@@ -90,7 +99,7 @@ export default function PlantDetailContent({ plant }: { plant: Plant }) {
   ];
 
   return (
-    <div className={styles.pageWrapper}>
+    <motion.div className={styles.pageWrapper} ref={pageRef} style={{ backgroundColor: pageBg }}>
 
       {/* ═══════ ACT 1 — ELEGANT HERO ═══════ */}
       <section className={styles.hero} ref={heroRef}>
@@ -113,7 +122,7 @@ export default function PlantDetailContent({ plant }: { plant: Plant }) {
           >
             {plant.badge && <span className={styles.badge}>{plant.badge}</span>}
             <p className={styles.botanical}>{plant.botanicalName}</p>
-            <h1 className={styles.name}>{plant.name}</h1>
+            <TextReveal text={plant.name} className={styles.name} />
             <p className={styles.tagline}>{plant.tagline}</p>
           </motion.div>
 
@@ -304,6 +313,6 @@ export default function PlantDetailContent({ plant }: { plant: Plant }) {
         )}
       </AnimatePresence>
 
-    </div>
+    </motion.div>
   );
 }

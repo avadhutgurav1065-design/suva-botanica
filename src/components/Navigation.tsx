@@ -2,6 +2,7 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { siteConfig } from '@/data/site-config';
+import ThemeToggle from '@/components/ui/ThemeToggle';
 export default function Navigation() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -57,18 +58,18 @@ export default function Navigation() {
           </div>
 
           <div className="nav-cta">
-            <a href={siteConfig.contact.whatsappUrl(siteConfig.contact.defaultWhatsappMessage)} className="btn btn-whatsapp" target="_blank" rel="noopener">
+            <ThemeToggle />
+            <a href={siteConfig.contact.whatsappUrl(siteConfig.contact.defaultWhatsappMessage)} className="btn btn-whatsapp nav-whatsapp-btn" target="_blank" rel="noopener">
               WhatsApp Us
             </a>
+            <button 
+              className={`hamburger ${menuOpen ? 'active' : ''}`} 
+              onClick={() => setMenuOpen(!menuOpen)}
+              aria-label="Toggle menu"
+            >
+              <span></span><span></span><span></span>
+            </button>
           </div>
-
-          <button 
-            className={`hamburger ${menuOpen ? 'active' : ''}`} 
-            onClick={() => setMenuOpen(!menuOpen)}
-            aria-label="Toggle menu"
-          >
-            <span></span><span></span><span></span>
-          </button>
         </div>
       </nav>
 

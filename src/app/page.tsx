@@ -1,6 +1,9 @@
 'use client';
 import { useEffect, useRef, useState, useCallback } from 'react';
 import Link from 'next/link';
+import FadeIn from '@/components/effects/FadeIn';
+import TextReveal from '@/components/effects/TextReveal';
+import MagneticBtn from '@/components/MagneticBtn';
 
 function Counter({ to, suffix = '', duration = 2000 }: { to: number; suffix?: string; duration?: number }) {
   const [count, setCount] = useState(0);
@@ -26,23 +29,6 @@ function Counter({ to, suffix = '', duration = 2000 }: { to: number; suffix?: st
   return <span ref={ref}>{count}{suffix}</span>;
 }
 
-function MagneticBtn({ children, className, href, target, rel, style: s }: {
-  children: React.ReactNode; className?: string; href?: string;
-  target?: string; rel?: string; style?: React.CSSProperties;
-}) {
-  const btnRef = useRef<HTMLAnchorElement>(null);
-  const onMove = useCallback((e: React.MouseEvent) => {
-    const b = btnRef.current; if (!b) return;
-    const r = b.getBoundingClientRect();
-    b.style.transform = `translate(${(e.clientX - r.left - r.width/2)*0.25}px,${(e.clientY - r.top - r.height/2)*0.25}px)`;
-  }, []);
-  const onLeave = useCallback(() => { if (btnRef.current) btnRef.current.style.transform = ''; }, []);
-  return (
-    <a ref={btnRef} href={href} className={className} target={target} rel={rel}
-      style={{ ...s, transition: 'transform 0.3s cubic-bezier(0.34,1.56,0.64,1),background 0.3s,box-shadow 0.3s' }}
-      onMouseMove={onMove} onMouseLeave={onLeave}>{children}</a>
-  );
-}
 
 const PLANTS = [
   { name:'Monstera Deliciosa', slug:'monstera-deliciosa', emoji:'🌿', tag:'Best Seller', desc:'Iconic split leaves. The ultimate statement piece for any interior.' },
@@ -81,18 +67,6 @@ export default function HomePage() {
   }, []);
 
   useEffect(() => {
-    if (titleRef.current) {
-      const words = 'Living keepsakes for lasting bonds.'.split(' ');
-      titleRef.current.innerHTML = '';
-      words.forEach((w, i) => {
-        const s = document.createElement('span');
-        s.className='word'; s.textContent=w;
-        s.style.transitionDelay=`${0.15+i*0.12}s`;
-        titleRef.current?.appendChild(s);
-        if (i<words.length-1) titleRef.current?.appendChild(document.createTextNode(' '));
-      });
-      setTimeout(() => titleRef.current?.classList.add('animate'), 300);
-    }
     setTimeout(() => heroRef.current?.classList.add('loaded'), 200);
     const obs = new IntersectionObserver(entries => {
       entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
@@ -140,15 +114,15 @@ export default function HomePage() {
         </svg>
 
         <div className="container hero-content">
-          <span className="section-label reveal visible">Suva Botanica · Pune</span>
-          <h1 className="hero-title" ref={titleRef}>Living keepsakes for lasting bonds.</h1>
-          <p className="hero-subtitle reveal visible">Curated, lab-grown plants — styled in gift-ready packaging, delivered across Pune. For the moments that deserve more than flowers.</p>
-          <div className="hero-actions reveal visible">
+          <FadeIn delay={0.2}><span className="section-label">Suva Botanica · Pune</span></FadeIn>
+          <TextReveal text="Living keepsakes for lasting bonds." className="hero-title" delay={0.3} />
+          <FadeIn delay={0.6}><p className="hero-subtitle">Curated, lab-grown plants — styled in gift-ready packaging, delivered across Pune. For the moments that deserve more than flowers.</p></FadeIn>
+          <FadeIn delay={0.8}><div className="hero-actions">
             <MagneticBtn href="/plants" className="btn btn-primary">Explore Collection →</MagneticBtn>
             <MagneticBtn href="https://wa.me/919518780272?text=Hi%20Suva%20Botanica!%20I'd%20like%20to%20order%20a%20plant." className="btn btn-secondary" target="_blank" rel="noopener noreferrer">💬 WhatsApp Us</MagneticBtn>
-          </div>
+          </div></FadeIn>
           {/* Live badge — now BELOW the buttons so it doesn't overlap title on mobile */}
-          <div style={{display:'inline-flex',alignItems:'center',gap:'0.5rem',marginTop:'1.5rem',background:'rgba(255,255,255,0.88)',backdropFilter:'blur(20px)',border:'1px solid rgba(139,158,130,0.3)',borderRadius:'50px',padding:'0.45rem 1rem',fontSize:'0.8rem',fontWeight:600,color:'var(--sage-dark)'}} className="reveal visible">
+          <div style={{display:'inline-flex',alignItems:'center',gap:'0.5rem',marginTop:'1.5rem',background:'var(--glass)',backdropFilter:'blur(20px)',border:'1px solid rgba(139,158,130,0.3)',borderRadius:'50px',padding:'0.45rem 1rem',fontSize:'0.8rem',fontWeight:600,color:'var(--charcoal)'}} className="reveal visible">
             <span style={{width:8,height:8,borderRadius:'50%',background:'#22c55e',display:'inline-block',animation:'pulse 2s infinite'}} />
             Pune Delivery Available
           </div>
@@ -194,9 +168,9 @@ export default function HomePage() {
       <section style={{padding:'var(--space-3xl) 0',background:'var(--cream-warm)',overflow:'hidden'}}>
         <div className="container">
           <div style={{textAlign:'center',marginBottom:'3rem'}}>
-            <span className="section-label reveal">Our Collection</span>
-            <h2 className="reveal" style={{marginBottom:'1rem'}}>36 Varieties. One Perfect Match.</h2>
-            <p className="subtitle reveal" style={{margin:'0 auto',textAlign:'center'}}>From air-purifying champions to statement foliage — every plant hand-selected, lab-grown, and gift-ready.</p>
+            <FadeIn delay={0.1}><span className="section-label">Our Collection</span></FadeIn>
+            <FadeIn delay={0.2}><h2>36 Varieties. One Perfect Match.</h2></FadeIn>
+            <FadeIn delay={0.3}><p className="subtitle" style={{margin:'0 auto',textAlign:'center'}}>From air-purifying champions to statement foliage — every plant hand-selected, lab-grown, and gift-ready.</p></FadeIn>
           </div>
           {/* Carousel: 1 card on mobile, 3 on desktop */}
           <div className="plant-carousel-wrap reveal">
@@ -230,8 +204,8 @@ export default function HomePage() {
         <div className="container">
           <div className="occasions-grid">
             <div>
-              <span className="section-label reveal">Perfect For</span>
-              <h2 className="reveal" style={{marginBottom:'2rem'}}>A Plant for Every Occasion</h2>
+              <FadeIn delay={0.1}><span className="section-label">Perfect For</span></FadeIn>
+              <FadeIn delay={0.2}><h2 style={{marginBottom:'2rem'}}>A Plant for Every Occasion</h2></FadeIn>
               <div style={{display:'flex',flexDirection:'column' as const,gap:'0.75rem'}}>
                 {OCCASIONS.map((occ,i)=>(
                   <div key={occ.label} onClick={()=>{setActiveOcc(i);setPlaying(false);}}
@@ -250,7 +224,7 @@ export default function HomePage() {
                 <div style={{fontSize:'4rem',marginBottom:'1.25rem',animation:'floatSlow 4s ease-in-out infinite'}}>{OCCASIONS[activeOcc].emoji}</div>
                 <h3 style={{color:'var(--white)',fontSize:'1.5rem',marginBottom:'0.75rem'}}>{OCCASIONS[activeOcc].label}</h3>
                 <p style={{opacity:0.85,lineHeight:1.7,fontSize:'0.9rem',marginBottom:'1.5rem'}}>{OCCASIONS[activeOcc].desc}</p>
-                <a href={`https://wa.me/919518780272?text=Hi!%20I%20need%20a%20plant%20for%20${encodeURIComponent(OCCASIONS[activeOcc].label)}`} className="btn" target="_blank" rel="noopener noreferrer" style={{background:'rgba(255,255,255,0.15)',color:'var(--white)',backdropFilter:'blur(10px)',border:'1px solid rgba(255,255,255,0.3)',fontSize:'0.875rem',padding:'0.75rem 1.5rem'}}>Order for {OCCASIONS[activeOcc].label} →</a>
+                <a href={`https://wa.me/919518780272?text=Hi!%20I%20need%20a%20plant%20for%20${encodeURIComponent(OCCASIONS[activeOcc].label)}`} className="btn" target="_blank" rel="noopener noreferrer" style={{background:'rgba(var(--white-rgb),0.15)',color:'var(--white)',backdropFilter:'blur(10px)',border:'1px solid rgba(var(--white-rgb),0.3)',fontSize:'0.875rem',padding:'0.75rem 1.5rem'}}>Order for {OCCASIONS[activeOcc].label} →</a>
               </div>
               <div style={{position:'absolute',top:'-1rem',right:'-1rem',background:'var(--terracotta)',color:'var(--white)',borderRadius:'50%',width:64,height:64,display:'flex',flexDirection:'column' as const,alignItems:'center',justifyContent:'center',fontSize:'0.6rem',fontWeight:700,textAlign:'center' as const,letterSpacing:'0.05em',boxShadow:'0 4px 20px rgba(196,149,106,0.4)',animation:'floatSlow 3s ease-in-out infinite'}}>GIFT<br/>READY</div>
             </div>
@@ -263,9 +237,9 @@ export default function HomePage() {
         <div className="container">
           <div className="corporate-inner">
             <div className="corporate-text">
-              <span className="section-label" style={{color:'var(--sage-light)'}}>For Business</span>
-              <h2 className="reveal-left">Bulk gifting &amp; event styling for teams, weddings, and venues across Pune.</h2>
-              <p className="subtitle reveal-left" style={{color:'rgba(247,243,237,0.8)',transitionDelay:'0.1s'}}>From employee onboarding kits to wedding venue greenery — we bring curated plants to your most important occasions at scale.</p>
+              <FadeIn delay={0.1}><span className="section-label" style={{color:'var(--sage-light)'}}>For Business</span></FadeIn>
+              <FadeIn delay={0.2} direction="right"><h2>Bulk gifting &amp; event styling for teams, weddings, and venues across Pune.</h2></FadeIn>
+              <FadeIn delay={0.3} direction="right"><p className="subtitle" style={{color:'rgba(247,243,237,0.8)'}}>From employee onboarding kits to wedding venue greenery — we bring curated plants to your most important occasions at scale.</p></FadeIn>
               <div className="offer-cards stagger-children">
                 {[
                   {e:'💼',t:'Corporate Bulk Gifting',d:'Onboarding kits, Diwali gifting, client appreciation — branded, packaged, delivered.'},
@@ -294,22 +268,22 @@ export default function HomePage() {
         <div className="container">
           <div className="about-hero">
             <div className="about-text">
-              <span className="section-label reveal">About Suva Botanica</span>
-              <h2 className="reveal">The Art of the Living Keepsake</h2>
-              <p className="reveal">Welcome to Suva Botanica. We believe the best gifts don&apos;t sit on a shelf gathering dust — they live, they breathe, and they grow alongside you.</p>
-              <p className="reveal">We created Suva Botanica to bridge the gap between premium interior aesthetics and meaningful gifting. Whether celebrating an anniversary, elevating a corporate workspace, or warming a new home, we curate botanical pieces that serve as living memories.</p>
-              <div className="reveal" style={{marginTop:'1.5rem'}}>
+              <FadeIn delay={0.1}><span className="section-label">About Suva Botanica</span></FadeIn>
+              <FadeIn delay={0.2}><h2>The Art of the Living Keepsake</h2></FadeIn>
+              <FadeIn delay={0.3}><p>Welcome to Suva Botanica. We believe the best gifts don&apos;t sit on a shelf gathering dust — they live, they breathe, and they grow alongside you.</p></FadeIn>
+              <FadeIn delay={0.4}><p>We created Suva Botanica to bridge the gap between premium interior aesthetics and meaningful gifting. Whether celebrating an anniversary, elevating a corporate workspace, or warming a new home, we curate botanical pieces that serve as living memories.</p></FadeIn>
+              <FadeIn delay={0.5}><div style={{marginTop:'1.5rem'}}>
                 <Link href="/about" className="btn btn-secondary">Read Our Story →</Link>
-              </div>
+              </div></FadeIn>
             </div>
             <div className="about-image reveal-right">
               <img src="/images/about_lab_1789493928791.jpg" alt="Suva Botanica tissue culture laboratory" loading="lazy" style={{transition:'transform 0.6s ease'}} onMouseEnter={e=>(e.currentTarget as HTMLElement).style.transform='scale(1.04) rotate(-1deg)'} onMouseLeave={e=>(e.currentTarget as HTMLElement).style.transform=''}/>
             </div>
           </div>
           <div className="process-section">
-            <span className="section-label reveal">The Science</span>
-            <h2 className="reveal">The Lab-to-Living Room Advantage</h2>
-            <p className="subtitle reveal" style={{maxWidth:720,marginBottom:'3rem'}}>Most online nurseries act as middlemen. We source directly from cutting-edge tissue-culture environments — every plant begins life in a sterile, climate-controlled lab.</p>
+            <FadeIn delay={0.1}><span className="section-label">The Science</span></FadeIn>
+            <FadeIn delay={0.2}><h2>The Lab-to-Living Room Advantage</h2></FadeIn>
+            <FadeIn delay={0.3}><p className="subtitle" style={{maxWidth:720,marginBottom:'3rem'}}>Most online nurseries act as middlemen. We source directly from cutting-edge tissue-culture environments — every plant begins life in a sterile, climate-controlled lab.</p></FadeIn>
             <div className="process-steps stagger-children">
               {[
                 {num:'01',title:'Virus-Free & Pristine',desc:'Engineered for absolute health — no hidden pests or diseases, ever.'},
@@ -331,18 +305,18 @@ export default function HomePage() {
             </div>
           </div>
           <div className="about-cta-section">
-            <div className="about-cta-inner reveal">
+            <FadeIn className="about-cta-inner">
               <h2>Designed for Your Space</h2>
               <p>Every plant we deliver is hand-potted in a premium matte ceramic vessel and secured with our proprietary soil-lock transit packaging. From our cultivation centres to your Pune doorstep — flawlessly.</p>
               <p className="about-tagline">Suva Botanica. Curated greenery for curated spaces.</p>
-            </div>
+            </FadeIn>
           </div>
         </div>
       </section>
 
       {/* ═══ STATS ═══ */}
       <section style={{padding:'var(--space-3xl) 0',background:'linear-gradient(135deg,var(--forest) 0%,var(--forest-deep) 100%)',position:'relative',overflow:'hidden'}}>
-        <div style={{position:'absolute',inset:0,opacity:0.04,backgroundImage:'radial-gradient(circle,rgba(255,255,255,0.8) 1px,transparent 1px)',backgroundSize:'40px 40px'}}/>
+        <div style={{position:'absolute',inset:0,opacity:0.04,backgroundImage:'radial-gradient(circle,rgba(var(--white-rgb),0.8) 1px,transparent 1px)',backgroundSize:'40px 40px'}}/>
         <div className="container" style={{position:'relative'}}>
           <div className="stats-grid stagger-children">
             {[{n:36,s:'+',l:'Plant Varieties',i:'🌿'},{n:30,s:' Day',l:'Health Guarantee',i:'💚'},{n:100,s:'%',l:'Tissue Cultured',i:'🧬'},{n:500,s:'+',l:'Happy Customers',i:'⭐'}].map(({n,s,l,i})=>(
@@ -359,7 +333,7 @@ export default function HomePage() {
       {/* ═══ TESTIMONIALS ═══ */}
       <section className="testimonials" id="testimonials">
         <div className="container">
-          <div className="section-header reveal"><span className="section-label">Kind Words</span><h2>What Our Customers Say</h2></div>
+          <FadeIn><div className="section-header"><span className="section-label">Kind Words</span><h2>What Our Customers Say</h2></div></FadeIn>
           <div className="testimonials-grid stagger-children">
             {[
               {q:"Ordered a Monstera for my sister's housewarming — packaging was so beautiful she almost didn't want to open it. Still thriving three months later!",a:'Priya M.',o:'Housewarming Gift'},
@@ -381,17 +355,17 @@ export default function HomePage() {
       {/* ═══ INSTAGRAM ═══ */}
       <section style={{padding:'var(--space-3xl) 0',background:'var(--cream-warm)',textAlign:'center' as const}}>
         <div className="container">
-          <span className="section-label reveal">Follow the Journey</span>
-          <h2 className="reveal" style={{marginBottom:'1rem'}}>@suvabotanica on Instagram</h2>
-          <p className="subtitle reveal" style={{margin:'0 auto 2rem',textAlign:'center'}}>Behind-the-scenes at our lab, new arrivals, styling inspo &amp; happy unboxings.</p>
-          <div className="reveal">
+          <FadeIn delay={0.1}><span className="section-label">Follow the Journey</span></FadeIn>
+          <FadeIn delay={0.2}><h2 style={{marginBottom:'1rem'}}>@suvabotanica on Instagram</h2></FadeIn>
+          <FadeIn delay={0.3}><p className="subtitle" style={{margin:'0 auto 2rem',textAlign:'center'}}>Behind-the-scenes at our lab, new arrivals, styling inspo &amp; happy unboxings.</p></FadeIn>
+          <FadeIn delay={0.4}>
             <MagneticBtn href="https://www.instagram.com/suvabotanica?stkn=NjBwZ29lOHNsMXlm" className="btn btn-primary" target="_blank" rel="noopener noreferrer">
               <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18" style={{marginRight:'0.5rem'}}>
                 <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
               </svg>
               Follow @suvabotanica
             </MagneticBtn>
-          </div>
+          </FadeIn>
         </div>
       </section>
 
@@ -399,19 +373,20 @@ export default function HomePage() {
       <section style={{padding:'var(--space-3xl) 0',background:'linear-gradient(135deg,var(--sage-dark),var(--forest))',position:'relative',overflow:'hidden',textAlign:'center' as const}}>
         <div style={{position:'absolute',inset:0,backgroundImage:'radial-gradient(ellipse at 20% 50%,rgba(184,150,90,0.15),transparent 60%),radial-gradient(ellipse at 80% 50%,rgba(139,158,130,0.2),transparent 60%)'}}/>
         <div className="container" style={{position:'relative'}}>
-          <span className="section-label reveal" style={{color:'rgba(255,255,255,0.6)'}}>Ready to Order?</span>
-          <h2 className="reveal" style={{color:'var(--white)',maxWidth:600,margin:'0 auto 1rem',fontSize:'clamp(1.75rem,3vw,2.5rem)'}}>Send a plant that lasts longer than flowers.</h2>
-          <p className="reveal" style={{color:'rgba(255,255,255,0.75)',maxWidth:480,margin:'0 auto 2.5rem',lineHeight:1.8}}>WhatsApp us to order, customise packaging, or ask about bulk gifting. Same/next-day delivery across Pune.</p>
-          <div className="reveal" style={{display:'flex',gap:'1rem',justifyContent:'center',flexWrap:'wrap' as const}}>
+          <FadeIn delay={0.1}><span className="section-label" style={{color:'rgba(var(--white-rgb),0.6)'}}>Ready to Order?</span></FadeIn>
+          <FadeIn delay={0.2}><h2 style={{color:'var(--white)',maxWidth:600,margin:'0 auto 1rem',fontSize:'clamp(1.75rem,3vw,2.5rem)'}}>Send a plant that lasts longer than flowers.</h2></FadeIn>
+          <FadeIn delay={0.3}><p style={{color:'rgba(var(--white-rgb),0.75)',maxWidth:480,margin:'0 auto 2.5rem',lineHeight:1.8}}>WhatsApp us to order, customise packaging, or ask about bulk gifting. Same/next-day delivery across Pune.</p></FadeIn>
+          <FadeIn delay={0.4}><div style={{display:'flex',gap:'1rem',justifyContent:'center',flexWrap:'wrap' as const}}>
             <MagneticBtn href="https://wa.me/919518780272?text=Hi%20Suva%20Botanica!%20I'd%20like%20to%20order%20a%20plant." className="btn btn-whatsapp" target="_blank" rel="noopener noreferrer">
               <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18">
                 <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
               </svg>
               Chat on WhatsApp
             </MagneticBtn>
-            <MagneticBtn href="/plants" className="btn" style={{background:'rgba(255,255,255,0.15)',color:'var(--white)',backdropFilter:'blur(10px)',border:'1px solid rgba(255,255,255,0.3)'}}>Browse All Plants</MagneticBtn>
-            <MagneticBtn href="/contact" className="btn" style={{background:'rgba(255,255,255,0.15)',color:'var(--white)',backdropFilter:'blur(10px)',border:'1px solid rgba(255,255,255,0.3)'}}>Contact Us</MagneticBtn>
+            <MagneticBtn href="/plants" className="btn" style={{background:'rgba(var(--white-rgb),0.15)',color:'var(--white)',backdropFilter:'blur(10px)',border:'1px solid rgba(var(--white-rgb),0.3)'}}>Browse All Plants</MagneticBtn>
+            <MagneticBtn href="/contact" className="btn" style={{background:'rgba(var(--white-rgb),0.15)',color:'var(--white)',backdropFilter:'blur(10px)',border:'1px solid rgba(var(--white-rgb),0.3)'}}>Contact Us</MagneticBtn>
           </div>
+          </FadeIn>
           <div className="reveal" style={{marginTop:'3rem',display:'flex',gap:'2rem',justifyContent:'center',flexWrap:'wrap' as const,opacity:0.75,fontSize:'0.875rem',color:'var(--white)'}}>
             <span>📞 +91 95187 80272</span><span>✉️ suvabotanica@gmail.com</span><span>📍 Pune, Maharashtra</span>
           </div>
