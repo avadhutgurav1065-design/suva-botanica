@@ -1,5 +1,6 @@
 'use client';
 import { useEffect, useRef } from 'react';
+import Image from 'next/image';
 import styles from './About.module.css';
 
 // ═══ PARALLAX HOOK ═══
@@ -72,7 +73,7 @@ export default function AboutPage() {
             Suva Botanica was born in Pune from a simple realization: the traditional plant nursery market was broken. Finding a healthy, beautifully packaged, gift-ready plant was nearly impossible. We set out to change that by combining advanced horticultural science with premium digital and aesthetic design.
           </p>
           <p className={`${styles.heroText} reveal`} style={{ transitionDelay: '0.4s' }}>
-            <strong>We are a brother-sister founding team, bridging the gap between clinical botanical perfection and curated living spaces.</strong>
+            <strong>We are a dedicated team, bridging the gap between clinical botanical perfection and curated living spaces.</strong>
           </p>
         </div>
 
@@ -132,6 +133,36 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* ═══ FOUNDER SECTION ═══ */}
+      <section className={styles.founderSection} style={{ padding: 'var(--space-4xl) var(--space-lg)' }}>
+        <div className="container" style={{ maxWidth: '1200px', margin: '0 auto' }}>
+          <div className={styles.founderGrid}>
+            <div className={`${styles.founderText} reveal-left`}>
+              <p style={{ color: 'var(--gold)', fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '1rem' }}>Meet The Founder</p>
+              <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(2.5rem, 5vw, 3.5rem)', color: 'var(--forest-deep)', marginBottom: '0.5rem' }}>Avadhut Gurav</h2>
+              <p className={styles.founderRole}>Founder & Head of Design & Operations</p>
+              <p style={{ fontSize: '1.125rem', lineHeight: 1.8, color: 'var(--charcoal)', opacity: 0.9, marginBottom: '1.5rem' }}>
+                As the founder of Suva Botanica, Avadhut combines a deep passion for horticulture with an eye for design, ensuring every plant that leaves our care is a living masterpiece.
+              </p>
+              <p style={{ fontSize: '1.125rem', lineHeight: 1.8, color: 'var(--charcoal)', opacity: 0.9 }}>
+                Our mission is to bridge the gap between premium interior aesthetics and meaningful gifting, delivering curated greenery that transforms spaces.
+              </p>
+            </div>
+            <div className={`${styles.founderImageContainer} reveal-right`}>
+              <div className={styles.founderImageWrapper}>
+                <Image
+                  src="/images/founder_avadhut.jpg"
+                  alt="Avadhut Gurav - Founder of Suva Botanica"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  style={{ objectFit: 'cover' }}
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ═══ CONNECT SECTION ═══ */}
       <section className={styles.connect}>
         <h2 className={`${styles.connectTitle} reveal`}>Begin Your Botanical Journey</h2>
@@ -140,17 +171,27 @@ export default function AboutPage() {
         </p>
         
         <div className={styles.connectGrid}>
-          <a href="https://wa.me/919518780272?text=Hi%20Suva%20Botanica,%20I%20have%20an%20inquiry." className={`${styles.magneticBtn} reveal-left`} target="_blank" rel="noopener noreferrer">
+          <a href="https://wa.me/919518780272?text=Hi%20Suva%20Botanica,%20I%20have%20an%20inquiry." className={`${styles.magneticBtn} reveal`} target="_blank" rel="noopener noreferrer">
             <span className={styles.btnContent}>
-              <span className={styles.btnName}>Digital & Design Experience</span>
+              <span className={styles.btnName}>Avadhut Gurav</span>
+              <span className={styles.btnNumber} style={{ fontSize: '0.85rem' }}>Founder, Design & Ops</span>
               <span className={styles.btnNumber}>+91 95187 80272</span>
             </span>
           </a>
           
-          <a href="https://wa.me/918669592638?text=Hi%20Suva%20Botanica,%20I%20have%20an%20inquiry." className={`${styles.magneticBtn} reveal-right`} target="_blank" rel="noopener noreferrer">
+          <a href="https://wa.me/919022554823?text=Hi%20Suva%20Botanica,%20I%20have%20an%20inquiry." className={`${styles.magneticBtn} reveal`} target="_blank" rel="noopener noreferrer">
             <span className={styles.btnContent}>
-              <span className={styles.btnName}>Botanical Operations</span>
-              <span className={styles.btnNumber}>+91 86695 92638</span>
+              <span className={styles.btnName}>Jayesh Mahajan</span>
+              <span className={styles.btnNumber} style={{ fontSize: '0.85rem' }}>Sales and Gifting</span>
+              <span className={styles.btnNumber}>+91 90225 54823</span>
+            </span>
+          </a>
+
+          <a href="https://wa.me/919307195947?text=Hi%20Suva%20Botanica,%20I%20have%20an%20inquiry." className={`${styles.magneticBtn} reveal`} target="_blank" rel="noopener noreferrer">
+            <span className={styles.btnContent}>
+              <span className={styles.btnName}>Aishwarya Thite</span>
+              <span className={styles.btnNumber} style={{ fontSize: '0.85rem' }}>Sales and CRM</span>
+              <span className={styles.btnNumber}>+91 93071 95947</span>
             </span>
           </a>
         </div>

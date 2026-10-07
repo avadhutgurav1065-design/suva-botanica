@@ -254,6 +254,44 @@
   display: inline-block;
 }
 
+/* ═══ FOUNDER SECTION ═══ */
+.founderSection {
+  background-color: var(--white);
+}
+
+.founderGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-3xl);
+  align-items: center;
+}
+
+.founderText {
+  padding-right: var(--space-xl);
+}
+
+.founderRole {
+  font-size: 1.125rem;
+  font-weight: 500;
+  color: var(--forest);
+  margin-bottom: var(--space-lg);
+  margin-top: calc(var(--space-xs) * -1);
+}
+
+.founderImageContainer {
+  position: relative;
+  width: 100%;
+}
+
+.founderImageWrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4/5;
+  border-radius: var(--radius-2xl);
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+}
+
 
 /* ═══ CONNECT SECTION ═══ */
 .connect {
@@ -400,6 +438,18 @@
   }
 
   .scrollIndicator { display: none; }
+
+  /* Founder */
+  .founderGrid {
+    grid-template-columns: 1fr;
+    gap: var(--space-2xl);
+  }
+  .founderText {
+    padding-right: 0;
+  }
+  .founderImageWrapper {
+    aspect-ratio: 1/1;
+  }
 
   /* Lab Promise */
   .labPromise {

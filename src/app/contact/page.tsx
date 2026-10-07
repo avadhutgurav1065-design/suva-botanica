@@ -30,7 +30,7 @@ export default function ContactPage() {
             Connect With Suva Botanica
           </h1>
           <p className={`${styles.heroText} reveal`} style={{ transitionDelay: '0.2s' }}>
-            Whether you need assistance with a recent order, require plant care guidance, or want to curate living gifts for a corporate event, our founding team is here to assist you.
+            Whether you need assistance with a recent order, require plant care guidance, or want to curate living gifts for a corporate event, our team is here to assist you.
           </p>
         </div>
       </section>
@@ -52,26 +52,42 @@ export default function ContactPage() {
               <span className={styles.sectionLabel}>Bespoke Services</span>
               <h2>For Corporate, Event & Bulk Gifting</h2>
               <p>
-                Looking for premium employee onboarding kits, festive corporate gifting, or botanical styling for an upcoming event? Bypass the standard support queue and speak directly with the founders to engineer a custom experience.
+                Looking for premium employee onboarding kits, festive corporate gifting, or botanical styling for an upcoming event? Bypass the standard support queue and speak directly with the founder to engineer a custom experience.
               </p>
               
               <div className={styles.contactList}>
                 <div className={styles.contactItem}>
-                  <span className={styles.contactRole}>Avadhut Gurav (Head of Design & Operations)</span>
+                  <span className={styles.contactRole}>Avadhut Gurav (Founder, Head of Design & Operations)</span>
                   <a href="https://wa.me/919518780272" target="_blank" rel="noopener noreferrer" className={styles.contactLink}>
                     +91 95187 80272
                   </a>
-                </div>
-                
-                <div className={styles.contactItem}>
-                  <span className={styles.contactRole}>Supriya Gurav (Head of Botanical Curation)</span>
-                  <a href="https://wa.me/918669592638" target="_blank" rel="noopener noreferrer" className={styles.contactLink}>
-                    +91 86695 92638
+                  <a href="mailto:avadhutgurav1065@gmail.com" className={styles.contactLink} style={{ marginLeft: '10px' }}>
+                    avadhutgurav1065@gmail.com
                   </a>
                 </div>
                 
                 <div className={styles.contactItem}>
-                  <span className={styles.contactRole}>Email</span>
+                  <span className={styles.contactRole}>Jayesh Mahajan (Sales and Gifting)</span>
+                  <a href="https://wa.me/919022554823" target="_blank" rel="noopener noreferrer" className={styles.contactLink}>
+                    +91 90225 54823
+                  </a>
+                  <a href="mailto:jayeshmahajan340@gmail.com" className={styles.contactLink} style={{ marginLeft: '10px' }}>
+                    jayeshmahajan340@gmail.com
+                  </a>
+                </div>
+
+                <div className={styles.contactItem}>
+                  <span className={styles.contactRole}>Aishwarya Thite (Sales and CRM)</span>
+                  <a href="https://wa.me/919307195947" target="_blank" rel="noopener noreferrer" className={styles.contactLink}>
+                    +91 93071 95947
+                  </a>
+                  <a href="mailto:thiteaish28@gmail.com" className={styles.contactLink} style={{ marginLeft: '10px' }}>
+                    thiteaish28@gmail.com
+                  </a>
+                </div>
+                
+                <div className={styles.contactItem}>
+                  <span className={styles.contactRole}>General Inquiries</span>
                   <a href="mailto:suvabotanica@gmail.com" className={styles.contactLink}>
                     suvabotanica@gmail.com
                   </a>

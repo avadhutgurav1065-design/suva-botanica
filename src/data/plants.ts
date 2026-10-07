@@ -1151,6 +1151,37 @@ export const plants: Plant[] = [
     inStock: true,
     badge: 'Fruit Bearing',
   },
+  {
+    id: 'jade-plant',
+    slug: 'jade-plant',
+    name: 'Jade Plant',
+    botanicalName: 'Crassula ovata',
+    tagline: 'The Plant of Prosperity',
+    description: 'A beautiful succulent known for its thick, glossy green leaves. A classic symbol of good luck and prosperity.',
+    longDescription: 'The Jade Plant is a popular and elegant succulent, revered in many cultures as a symbol of good luck and financial prosperity. With its sturdy, woody stems and fleshy, oval-shaped green leaves, it has the charm of a miniature tree. Cultivated with precision in our labs, this Jade Plant is exceptionally healthy, resilient, and easy to care for. It thrives indoors, making it the perfect piece of living decor for a desk or sunny window sill. Potted in a premium matte ceramic planter, it represents enduring beauty and fortune.',
+    price: 899,
+    originalPrice: 1099,
+    image: '/images/plant_jade.jpg',
+    gallery: ['/images/plant_jade.jpg'],
+    categories: ['Succulent', 'Low Maintenance', 'Gift Favorite'],
+    care: {
+      light: 'Bright, indirect sunlight to full sun',
+      water: 'Water thoroughly when soil is completely dry',
+      humidity: 'Low to average household humidity',
+      temperature: '18°C to 24°C',
+      difficulty: 'Easy',
+      petSafe: false,
+    },
+    features: [
+      'Symbol of prosperity and good luck',
+      'Extremely drought-tolerant',
+      'Develops woody stems, ideal for bonsai style',
+      'Air-purifying properties',
+    ],
+    whatsappMessage: "Hi Suva Botanica! I'm interested in the Jade Plant. Could you share more details?",
+    inStock: true,
+    badge: 'Best Seller',
+  },
 ];
 
 // Helper functions

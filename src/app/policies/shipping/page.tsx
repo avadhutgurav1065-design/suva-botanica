@@ -29,7 +29,7 @@ export default function ShippingPage() {
       <ul>
         <li><strong>Processing Time:</strong> Orders placed before 12:00 PM (IST) are processed on the same day. Orders placed after 12:00 PM will be processed the following business day.</li>
         <li><strong>Delivery Window:</strong> Once processed, your living keepsake will be hand-delivered within 24 to 48 hours.</li>
-        <li><strong>Scheduled Gifting:</strong> If you need a gift delivered on a specific future date, please add a note during checkout or contact our founders directly via WhatsApp after placing your order.</li>
+        <li><strong>Scheduled Gifting:</strong> If you need a gift delivered on a specific future date, please add a note during checkout or contact our founder directly via WhatsApp after placing your order.</li>
       </ul>
 
       <h2>4. Receiving the Delivery (Important)</h2>
