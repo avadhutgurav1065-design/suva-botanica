@@ -6,6 +6,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import type { Plant } from '@/data/plants';
 import { siteConfig } from '@/data/site-config';
+import EncyclopediaSection from './EncyclopediaSection';
 import styles from './PlantDetail.module.css';
 
 /* ── Difficulty → meter percentage mapping ── */
@@ -244,6 +245,11 @@ export default function PlantDetailContent({ plant }: { plant: Plant }) {
           </motion.div>
         </div>
       </section>
+
+      {/* ═══════ ENCYCLOPEDIA (OPTIONAL) ═══════ */}
+      {plant.encyclopedia && (
+        <EncyclopediaSection data={plant.encyclopedia} plantName={plant.name} />
+      )}
 
       {/* ═══════ ACT 4 — ORDER CTA ═══════ */}
       <section className={styles.ctaSection}>
